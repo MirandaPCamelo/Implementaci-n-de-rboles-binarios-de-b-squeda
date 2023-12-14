@@ -1,50 +1,53 @@
-import java.util.*;
 /**
- * Miranda Patricia Pérez Camelo
- * 10/12/2023
+ * Main.
+ * Llama a todos los métodos de la clase ABB.
+ * 
+ * @author (Miranda Patricia Pérez Camelo) 
+ * @version (Diciembre 10, 2023)
  */
-
-public class Main {
+public class Main{
     public static void main(String[] args) {
+        // Crear un objeto de la clase ABB
         ABB arbol = new ABB();
+        //Nodo raizArbolPtr = arbol.getRaiz();
 
-        // 9,2,1,16,6,11,8,4
-        arbol.insertarValor(9);
-        arbol.insertarValor(2);
-        arbol.insertarValor(1);
-        arbol.insertarValor(16);
-        arbol.insertarValor(6);
-        arbol.insertarValor(11);
-        arbol.insertarValor(8);
-        arbol.insertarValor(4);
+        //nodos en el árbol 9,2,1,16,6,11,8,4
+        System.out.println("Insertando nodos en el árbol: 9,2,1,16,6,11,8,4");
+        arbol.insertarValor(9); // Inserta el valor 9 en el árbol
+        arbol.insertarValor(2); // Inserta el valor 2 en el árbol
+        arbol.insertarValor(1); // Inserta el valor 1 en el árbol
+        arbol.insertarValor(16); // Inserta el valor 16 en el árbol
+        arbol.insertarValor(6); // Inserta el valor 6 en el árbol
+        arbol.insertarValor(11); // Inserta el valor 11 en el árbol
+        arbol.insertarValor(8); // Inserta el valor 8 en el árbol
+        arbol.insertarValor(4); // Inserta el valor 4 en el árbol
 
-        arbol.arbolHorizontal(0, arbol.getRaiz());
+        //Arbol horizontalmente
+        System.out.println("Árbol horizontalmente");
+        arbol.arbolHorizontal(0, arbol.getRaiz()); // Imprime el árbol horizontalmente
 
+        //Recorridos en orden, preorden y postorden
         System.out.println("Recorrido en orden:");
-        arbol.inOrden(arbol.getRaiz());
+        arbol.inorden(arbol.getRaiz()); // Imprime el recorrido en orden del árbol
         System.out.println("\nRecorrido en preorden:");
-        arbol.preOrden(arbol.getRaiz());
+        arbol.preorden(arbol.getRaiz()); // Imprime el recorrido en preorden del árbol
         System.out.println("\nRecorrido en postorden:");
-        arbol.postOrden(arbol.getRaiz());
-        
-        System.out.println("Buscar valor 11:");
-        int valor = 11;
-        if(arbol.busquedaNodo(valor, arbol.getRaiz())){
-            
-            System.out.println("\nEl valor " + valor + " ha sido encontrado.");
-            
-        }
-        else{
+        arbol.postorden(arbol.getRaiz()); // Imprime el recorrido en postorden del árbol
 
-            System.out.println("\nEl valor " + valor + " no ha sido encontrado.");
-            
+        // Buscar un valor en el árbol
+        int valorBuscado = 16;
+        if(arbol.busqueda(valorBuscado, arbol.getRaiz())) // Busca el valor 16 en el árbol
+        {
+            System.out.println("\nEl valor " + valorBuscado + " se encuentra en el árbol.");
         }
-        
-        System.out.println("Eliminar valor 11");
+        else
+        {
+            System.out.println("\nEl valor " + valorBuscado + " no se encuentra en el árbol.");
+        }
 
-        arbol.eliminarValor(11);
-        
-        arbol.arbolHorizontal(0, arbol.getRaiz());
-        
+        // Eliminar los nodos del árbol
+        arbol.eliminarPredecesor(6,arbol.getRaiz()); // Elimina el predecesor del valor 6 en el árbol
+        System.out.println("Se ha eliminado el predecesor del valor 6 en el árbol.");
+        arbol.arbolHorizontal(0, arbol.getRaiz()); // Imprime el árbol horizontalmente
     }
 }
